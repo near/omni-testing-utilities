@@ -7,7 +7,7 @@ use near_primitives::hash::CryptoHash;
 use near_primitives::transaction::{Transaction, TransactionV0};
 use near_primitives::types::BlockReference;
 use near_primitives::views::{QueryRequest, TxExecutionStatus};
-use near_sdk::AccountId;
+use near_account_id::AccountId;
 use std::time::{Duration, Instant};
 
 use super::environment::Config;
@@ -24,7 +24,9 @@ pub async fn compile_and_deploy_contract(
     near_json_rpc_client: &JsonRpcClient,
 ) -> Result<(), Box<dyn std::error::Error>> {
     // Compile the contract
-    let contract_wasm = near_workspaces::compile_project("./").await?;
+    let build_opts = cargo_near_build::BuildOpts::default();
+    let wasm_path = cargo_near_build::build_with_cli(build_opts)?;
+    let contract_wasm = std::fs::read(wasm_path)?;
 
     // Get the block hash and nonce
     let result = get_nonce_and_block_hash(

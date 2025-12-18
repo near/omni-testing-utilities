@@ -11,7 +11,7 @@ use k256::{
     elliptic_curve::{bigint::ArrayEncoding, CurveArithmetic, PrimeField},
     AffinePoint, Scalar, Secp256k1, U256,
 };
-use near_sdk::AccountId;
+use near_account_id::AccountId;
 use ripemd::Ripemd160;
 use sha3::Sha3_256;
 
