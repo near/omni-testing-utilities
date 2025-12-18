@@ -1,3 +1,4 @@
+use near_account_id::AccountId;
 use near_crypto::{InMemorySigner, PublicKey};
 use near_jsonrpc_client::methods::tx::{RpcTransactionError, TransactionInfo};
 use near_jsonrpc_client::{methods, JsonRpcClient};
@@ -7,7 +8,6 @@ use near_primitives::hash::CryptoHash;
 use near_primitives::transaction::{Transaction, TransactionV0};
 use near_primitives::types::BlockReference;
 use near_primitives::views::{QueryRequest, TxExecutionStatus};
-use near_account_id::AccountId;
 use std::time::{Duration, Instant};
 
 use super::environment::Config;
