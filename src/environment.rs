@@ -1,8 +1,8 @@
 use std::fs::File;
 use std::io::Read;
 
+use near_account_id::AccountId;
 use near_crypto::{PublicKey, SecretKey};
-use near_sdk::AccountId;
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Deserialize, Serialize)]

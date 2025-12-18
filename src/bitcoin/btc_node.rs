@@ -10,7 +10,7 @@ pub fn setup_bitcoin_testnet() -> Result<bitcoind::BitcoinD, Box<dyn std::error:
             curr_dir_path.join("tests/bin").join("bitcoind-linux")
         } else {
             return Err(
-                std::io::Error::new(std::io::ErrorKind::Other, "Unsupported platform").into(),
+                std::io::Error::other("Unsupported platform").into(),
             );
         };
 
